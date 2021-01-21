@@ -66,7 +66,7 @@ CStartButton * CStartButton::Create(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 HRESULT CStartButton::Init(void)
 {
 	m_pNumber = CNumber::Create(D3DXVECTOR3(GetPos().x + 55, GetPos().y, 0.0f), D3DXVECTOR3(25.0f, GetSize().y, 0.0f));
-	m_pNumber->SetNumber(CGame::SetStage() + 1);
+	m_pNumber->SetNumber(CGame::GetStage() + 1);
 	CButtonp::Init();
 	SetPos(D3DXVECTOR3(GetPos().x + 20, GetPos().y,0.0f));
 	SetSize(D3DXVECTOR3(GetSize().x-100, GetSize().y,0.0f));

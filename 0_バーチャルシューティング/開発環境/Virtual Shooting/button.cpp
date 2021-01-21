@@ -130,11 +130,12 @@ HRESULT CButton::Init(void)
 	switch (m_Type)
 	{
 	case BUTTON_TYPE_1:
-		if (CGame::SetStage()+1 < CGame::STAGE_TYPE_3+1)
+		if (CGame::GetStage()+1 < CGame::STAGE_TYPE_3+1)
 		{
 			m_pText = CText::Create(D3DXVECTOR3(m_pos.x + m_size.x / 3 - 50, m_pos.y, 0.0f), D3DXVECTOR3(m_size.x - 100, m_size.y, m_size.z), CText::TEXT_START);
 			m_pNumber = CNumber::Create(D3DXVECTOR3(m_pos.x + 85, m_pos.y, 0.0f), D3DXVECTOR3(25.0f, m_size.y, 0.0f));
-			m_pNumber->SetNumber(CGame::SetStage()+1);
+			
+			m_pNumber->SetNumber(CGame::GetStage()+1);
 		}
 		else
 		{

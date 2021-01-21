@@ -68,9 +68,9 @@ HRESULT CResult::Init(void)
 	//スコアを受け取る
 	nScore = CManager::GetScore();
 	//データ読み込み
-	ReadFile(CGame::SetStage());
+	ReadFile(CGame::GetStage());
 	//データ追加
-	int nRanking = SetRanking(nScore, CGame::SetStage());
+	int nRanking = SetRanking(nScore, CGame::GetStage());
 
 	//テクスチャの読み込み
 	CResultBg::Load();	//背景
@@ -129,9 +129,10 @@ void CResult::Update(void)
 	CFade *pFade = CManager::GetFade();				//フェード取得	
 	if (pMouse->GetClickTrigger(0) == true  )
 	{
-		if(CGame::SetStage() == CGame::STAGE_TYPE_MAX)
+		if(CGame::GetStage() == CGame::STAGE_TYPE_MAX)
 		{
 			pFade->SetFade(GAME_MODE_CLEAR);
+			CGame::SetSteage(CGame::STAGE_TYPE_1);
 		}
 		else	
 		{

@@ -144,35 +144,6 @@ void CSelect::Uninit(void)
 //=============================================================================
 void CSelect::Update(void)
 {
-	//CSound*		pSound	= CManager::GetSound();	//サウンド取得
-	//CInihMouse*	pMouse	= CManager::GetMouse();	//マウス取得
-	//CFade*		pFade	= CManager::GetFade();	//フェイド取得
-	//CScore*		pMinusScore = CSelect::GetMinusScore();
-
-	//WEAPON_MODE nPlayerWeapon[MAX_WEAPON];
-	//for (int nCount = 0; nCount < 2; nCount++)
-	//{
-	//	nPlayerWeapon[nCount] = CManager::GetWeapon(nCount);
-	//}
-
-	//if (m_pStartButton->Hit()==true)
-	//{
-	//	pMinusScore->SetScore(0);
-
-	//	//クリックしているか
-	//	if (pMouse->GetClickTrigger(0) == true)
-	//	{
-	//		//武装がどちらも装備しているか
-	//		if (nPlayerWeapon[0] != WEAPONS_MODE_NONE
-	//			|| nPlayerWeapon[1] != WEAPONS_MODE_NONE)
-	//		{
-	//			//SE音
-	//			pSound->Play(CSound::LABEL_SE_START);
-	//			//フェイドアウト判定
-	//			pFade->SetFade(GAME_MODE_STAGE);
-	//		}
-	//	}
-	//}
 
 
 	for (int nCount = 0; nCount < MAX_NUMBER; nCount++)

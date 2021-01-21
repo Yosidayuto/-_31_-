@@ -468,10 +468,9 @@ void CGame::StageMode(void)
 			CManager::SetScore(m_Score->GetScore());
 
 			CResult::Create();
-			m_StageType = STAGE_TYPE_1;
+			int nStage = m_StageType + 1;
+			m_StageType = (STAGE_TYPE)nStage;
 
-
-			m_nCountEnemy += 450;
 			break;
 
 		}

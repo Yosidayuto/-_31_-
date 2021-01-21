@@ -39,7 +39,8 @@ public:
 	void			Draw(void);		//描画処理
 	static CLife	*GetLife(void);	//ライフ取得
 	static CScore	*GetScore(void);//ゲットスコア
-	static STAGE_TYPE SetStage(void) { return m_StageType; }
+	static STAGE_TYPE GetStage(void) { return m_StageType; }
+	static void			SetSteage(STAGE_TYPE type) { m_StageType = type; }
 	static CPlayer *GetPlayer(void) { return m_pPlayer; }
 private:
 	void			EnemeyCreate(void);	//エネミークリエイト
