@@ -1,17 +1,25 @@
+//=============================================================================
+//
+// エフェクト処理 [effect.h]
+// Author : 吉田悠人
+//
+//=============================================================================
+
 #ifndef _EFFECT_H_
 #define _EFFECT_H_
-//----------------------------------------------
-//ヘッダーファイル
-//----------------------------------------------
+//=============================================================================
+//インクルードファイル
+//=============================================================================
 #include "main.h"
 #include "scene2d.h"
-//----------------------------------------------
-//クラス
-//----------------------------------------------
+
+//=============================================================================
+// クラス定義
+//=============================================================================
 class CEffect:public CScene2d
 {
 public:
-	CEffect(int nPriorit = 1);
+	CEffect(int nPriorit = PRIORITY_OBJECT_1);
 	~CEffect();
 	typedef enum  //エフェクト種類
 	{
@@ -24,18 +32,16 @@ public:
 	static void		Unload(void);							//テクスチャの破棄
 	static HRESULT	Load(void);								//テクスチャ読み込み
 
-	HRESULT			Init( D3DXVECTOR3 size, D3DXCOLOR col);	//初期化処理
-	void			Uninit(void);			//終了処理
-	void			Update(void);			//更新処理
-	void			Draw(void);				//描画処理
+	HRESULT	Init( D3DXVECTOR3 size, D3DXCOLOR col);		//初期化処理
+	void	Uninit(void);								//終了処理
+	void	Update(void);								//更新処理
+	void	Draw(void);									//描画処理
 private:
-	D3DXVECTOR3 m_size;						//サイズ
-	EFFECT_TYPE m_Type;						//タイプ
-	D3DXCOLOR	m_col;						//カラー
-	static LPDIRECT3DTEXTURE9	m_pTexture[EFFECT_TYPE_MAX];	//テクスチャのポインタ
-	static char					*pTexture[EFFECT_TYPE_MAX];			//テキスト名
-
-	int	nLife;								//エフェクトの射程距離
+	static TEXTURE_DATA	m_TextureData[EFFECT_TYPE_MAX];	// テクスチャデータ
+	D3DXVECTOR3 m_size;				//サイズ
+	EFFECT_TYPE m_Type;				//タイプ
+	D3DXCOLOR	m_col;				//カラー
+	int	nLife;						//エフェクトの射程距離
 
 };
 

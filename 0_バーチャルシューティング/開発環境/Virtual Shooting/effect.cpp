@@ -16,12 +16,9 @@
 //----------------------------------
 //静的メンバー変数
 //----------------------------------
-LPDIRECT3DTEXTURE9 CEffect::m_pTexture[EFFECT_TYPE_MAX] = {};
-char * CEffect::pTexture[EFFECT_TYPE_MAX]=
-{
-	"data/TEXTURE/Bullet.png",
-	"data/TEXTURE/Laser.png"
-};
+TEXTURE_DATA CEffect::m_TextureData[EFFECT_TYPE_MAX] = 
+{ {NULL,"data/TEXTURE/Bullet.png"},
+{ NULL,	"data/TEXTURE/Laser.png"} };
 
 CEffect::CEffect(int nPriorit):CScene2d(nPriorit)
 {
@@ -52,10 +49,10 @@ void CEffect::Unload(void)
 	for (int nCount = 0; nCount < EFFECT_TYPE_MAX; nCount++)
 	{
 		//テクスチャの破棄
-		if (m_pTexture[nCount] != NULL)
+		if (m_TextureData[nCount].m_Texture != NULL)
 		{
-			m_pTexture[nCount]->Release();
-			m_pTexture[nCount] = NULL;
+			m_TextureData[nCount].m_Texture->Release();
+			m_TextureData[nCount].m_Texture = NULL;
 		}
 
 	}
@@ -68,7 +65,7 @@ HRESULT CEffect::Load(void)
 	for (int nCount = 0; nCount < EFFECT_TYPE_MAX; nCount++)
 	{
 		//テクスチャの読み込み
-		D3DXCreateTextureFromFile(pDevice, pTexture[nCount], &m_pTexture[nCount]);
+		D3DXCreateTextureFromFile(pDevice, m_TextureData[nCount].m_cFileName, &m_TextureData[nCount].m_Texture);
 
 	}
 	return S_OK;
@@ -83,7 +80,7 @@ HRESULT CEffect::Init(D3DXVECTOR3 size, D3DXCOLOR col)
 	//サイズ
 	SetSize(D3DXVECTOR3(size.x, size.y, 0.0f));
 	//テクスチャの設定
-	BindTexture(m_pTexture[m_Type]);
+	BindTexture(m_TextureData[m_Type].m_Texture);
 	//初期化処理
 	CScene2d::Init();
 
